@@ -26,7 +26,7 @@
 
   
 
-  <title>Categories | Axon的博客</title>
+  <title>使用StableDIffusion的GFPGAN/COdeFormer进行人脸修复 | Axon的博客</title>
 
   
 
@@ -52,9 +52,9 @@
   <div class="root-container">
     
 <!-- header container -->
-<header class="header-container">
+<header class="header-container post">
   
-    <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
+    <div class="post-image" style="background-image: url(https://s2.loli.net/2024/03/12/jR5dLqKE4t3n1MC.jpg)"></div>
   
 
   <!-- navbar -->
@@ -102,36 +102,127 @@
 
   
   
-
-  
-  
     <div class="header-content">
-      <div class="post-text layout-block layout-padding">
-        <h1 class="title-wrap">Categories</h1>
-        
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">使用StableDIffusion的GFPGAN/COdeFormer进行人脸修复</h1>
+          <h2 class="title-sub-wrap">
+            <strong>Axon_Yuki</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2024-03-12T15:52:31.000Z" itemprop="datePublished">2024-03-12</time>
+          </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2024-03-13T10:55:12.834Z" itemprop="dateUpdated">2024-03-13</time>
+            </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/%E5%A4%9A%E5%AA%92%E4%BD%93/">📒 多媒体</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/AI%E7%BB%98%E7%94%BB/">🏷️ AI绘画</a></li>
+  
+</ul>
+        </div>
       </div>
     </div>
+  
+
+  
   
   
 </header>
 
-    <!-- 分页(其他自定义页面) -->
+    <!-- 文章 -->
 
-<!-- 自定义页面 -->
-
+<!-- 文章内容 -->
 <div class="body-container">
   <article class="content-container layout-block post-container">
     <div class="article-info">
       
+      
+      
+      
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其实大多数情况下，依靠像素蛋糕或者是ps的液化功能足以完成大部分的修复；但是考虑到一些十分极端的情况下有些是做不回来的。比如说由于前期的失误导致后期拉曝光也是一堆噪点；还有妆娘导致的一些不可挽回的损失（卧蚕画太多了，睫毛丢失）；这时候可以尝试使用Stable Diffusion的自带系统-GFPGAN或者Code Former进行修复改善。</p>
+<h1 id="什么是GFPGAN-Code-Former？"><a href="#什么是GFPGAN-Code-Former？" class="headerlink" title="什么是GFPGAN&#x2F;Code Former？"></a>什么是GFPGAN&#x2F;Code Former？</h1><p>GFPGAN由腾讯公司开源，它利用预训练的面部生成对抗网络（如StyleGAN2）中蕴含的丰富先验知识来进行所谓的盲脸修复，也就是在没有完整面部信息的情况下对人脸进行修复。这项技术的目标是开发出既实用又能够应对现实场景中的人脸修复问题的算法。  </p>
+<p>而CodeFormer是一个利用深度学习技术来修复和恢复人脸图像的模型。它能够处理多种人脸相关的任务，包括但不限于人脸超分辨率（即将低分辨率的人脸图像提升到高分辨率）、人脸去马赛克（清除图像中的马赛克效果）、人脸修复（修补面部图像中的损伤或缺陷）以及人脸上色等。这些功能使得CodeFormer在图像处理和计算机视觉领域具有广泛的应用前景。此外，CodeFormer模型基于Transformer预测网络构建，这使得它能够对低质量人脸的全局组成和上下文进行建模，以进行编码预测。这种模型设计允许它在即使输入信息严重缺失的情况下也能复原出与目标人脸非常接近的自然人脸图像。  </p>
+<p>在实验中，我得到的是以下结论：GFPGAN更倾向于“修复”，即保留人脸特征的情况下尝试细化细节；而Code Former倾向于“创造”，将它认为失真&amp;&amp;不好看的地方进行锐化修改。</p>
+<h1 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h1><p><img src="https://s2.loli.net/2024/03/12/8vSeu5wljrEUibO.png" alt="设置界面">  </p>
+<p>首先在设置-系统-面部修复中开启修复功能。<em>（在SD1.6版本之前，这个选项是出现在文生图&#x2F;图生图的下方）</em></p>
+<p>打开Extras附加功能，将存在缺陷的照片放入，缩放比例一般是2-4（因为SD的生成精度不如相机那么高，还会受到分辨率的限制，有时候你甚至可以剪切一个头下来单独生成），放大算法使用ESRGAN系列。我使用的参数一般是：第一算法R-ESRGAN 4x;第二放大算法ESRGAN-4x，可见度为0.1左右，这样子可以保留一部分的细节。</p>
+<p>下面还有更多的参数，我一一讲解：</p>
+<ul>
+<li>GFPGAN&#x2F;CODEFORMER Visibility：相当于ps中的图层透明度，修改即可进行强度的修改</li>
+<li>CODEFORMER WEIGHT：效果权重，0是最高，1是最小。<strong>一般来说，我不建议两个一起勾选，否则很有可能出现鬼图</strong></li>
+<li>Auto focal point crop：用于大光圈虚化的插件，中文翻译为“自动焦点裁切”，会检测到合焦的物体，裁切剔除失焦的物体，减少计算量。<ul>
+<li>Focal point face weight&#x2F;焦点面部权重：调高人物面部的权重，优先进行人脸部位的处理。</li>
+<li>Focal point entropy weight&#x2F;焦点熵权重：调高焦点物体权重。</li>
+<li>Focal point edges weight&#x2F;焦点线条权重：强调图像边缘的重要性，使得在裁切时保持边缘的完整性，避免重要的视觉元素被剪切掉。</li>
+<li>一般建议开启。</li>
+</ul>
+</li>
+<li>Caption:自动命名。clip和deepboaru都是反推关键词的模型。</li>
+<li>Split oversized images&#x2F;分割过大的图像：显存不足的时候可以选用，切割图像再渲染。</li>
+</ul>
+
       </section>
 
       
       
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://s2.loli.net/2024/03/13/fgiVospCA8SqWnL.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2024/03/13/YOLO%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">YOLO V9学习笔记</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+    <div class="card-text">
+      
+        <a href="/2024/03/10/%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9ejs%E4%BB%A3%E7%A0%81%E6%88%90%E4%B8%BA%E8%83%BD%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E7%9A%84%E5%9B%BE%E7%89%87/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">如何修改Ejs代码成为能导入相对路径的图片</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
 
-      
-      
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
     </div>
     <div class="widget-info">
       <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -168,6 +259,8 @@
     </div>
   </div>
 </section>
+
+      
 
       
 <section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -231,7 +324,6 @@
     </div>
   </article>
 </div>
-
 
     <!-- footer container -->
 <footer id="footer" class="footer">

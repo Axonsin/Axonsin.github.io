@@ -26,7 +26,7 @@
 
   
 
-  <title>Categories | Axon的博客</title>
+  <title>YOLO V9学习笔记 | Axon的博客</title>
 
   
 
@@ -52,9 +52,9 @@
   <div class="root-container">
     
 <!-- header container -->
-<header class="header-container">
+<header class="header-container post">
   
-    <div class="post-image" style="background-image: url(https://qiniu.sukoshi.xyz/src/images/68686407_p0.jpg)"></div>
+    <div class="post-image" style="background-image: url(https://s2.loli.net/2024/03/13/fgiVospCA8SqWnL.jpg)"></div>
   
 
   <!-- navbar -->
@@ -102,36 +102,90 @@
 
   
   
-
-  
-  
     <div class="header-content">
-      <div class="post-text layout-block layout-padding">
-        <h1 class="title-wrap">Categories</h1>
-        
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">YOLO V9学习笔记</h1>
+          <h2 class="title-sub-wrap">
+            <strong>Axon_Yuki</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2024-03-13T13:43:45.000Z" itemprop="datePublished">2024-03-13</time>
+          </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/%E5%AD%A6%E4%B9%A0/">📒 学习</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+    <li><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">🏷️ 深度学习</a></li>
+  
+</ul>
+        </div>
       </div>
     </div>
+  
+
+  
   
   
 </header>
 
-    <!-- 分页(其他自定义页面) -->
+    <!-- 文章 -->
 
-<!-- 自定义页面 -->
-
+<!-- 文章内容 -->
 <div class="body-container">
   <article class="content-container layout-block post-container">
     <div class="article-info">
       
+      
+      
+      
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">parser.add_argument(<span class="string">&#x27;--weights&#x27;</span>, nargs=<span class="string">&#x27;+&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=ROOT / <span class="string">&#x27;&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;模型权重的路径或Triton URL。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--source&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=ROOT / <span class="string">&#x27;data/images&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;输入数据的来源，可以是文件、目录、URL、glob模式、屏幕捕获或网络摄像头。默认为ROOT/data/images。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--data&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">str</span>, default=ROOT / <span class="string">&#x27;data/coco128.yaml&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;数据集配置文件的路径，例如coco128.yaml。默认为ROOT/data/coco128.yaml。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--imgsz&#x27;</span>, <span class="string">&#x27;--img&#x27;</span>, <span class="string">&#x27;--img-size&#x27;</span>, nargs=<span class="string">&#x27;+&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, default=[<span class="number">640</span>], <span class="built_in">help</span>=<span class="string">&#x27;推理时的图像大小（高度、宽度）。默认为[640]。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--conf-thres&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">float</span>, default=<span class="number">0.25</span>, <span class="built_in">help</span>=<span class="string">&#x27;检测的置信度阈值。默认为0.25,就是我们判断一个物体概率为0-1,如果大于0.25则判断是该类别&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--iou-thres&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">float</span>, default=<span class="number">0.45</span>, <span class="built_in">help</span>=<span class="string">&#x27;非最大抑制（NMS）的交并比（IoU）阈值。默认为0.45。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--max-det&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, default=<span class="number">1000</span>, <span class="built_in">help</span>=<span class="string">&#x27;每张图像的最大检测数量。默认为1000。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--device&#x27;</span>, default=<span class="string">&#x27;&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;指定运行设备，例如CUDA设备（0或0,1,2,3）或CPU。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--view-img&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，展示检测结果。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--save-txt&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，将检测结果保存为文本文件。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--save-csv&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，将检测结果保存为CSV格式。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--save-conf&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，在文本文件中保存置信度信息。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--save-crop&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，保存被检测对象的裁剪图像。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--nosave&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，不保存图像或视频结果。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--classes&#x27;</span>, nargs=<span class="string">&#x27;+&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, <span class="built_in">help</span>=<span class="string">&#x27;过滤指定的类别，例如0或 0 2 3。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--agnostic-nms&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，使用与类别无关的NMS。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--augment&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，使用增强的推理。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--visualize&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，可视化特征。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--update&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，更新所有模型。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--project&#x27;</span>, default=ROOT / <span class="string">&#x27;runs/detect&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;设置结果保存的项目目录。默认为ROOT/runs/detect。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--name&#x27;</span>, default=<span class="string">&#x27;exp&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;设置保存结果的子目录名称。默认为exp。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--exist-ok&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，允许已存在的项目/名称，不自动增加编号。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--line-thickness&#x27;</span>, default=<span class="number">3</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, <span class="built_in">help</span>=<span class="string">&#x27;设置边界框的线条粗细（像素）。默认为3。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--hide-labels&#x27;</span>, default=<span class="literal">False</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，隐藏标签。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--hide-conf&#x27;</span>, default=<span class="literal">False</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，隐藏置信度。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--half&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，使用FP16半精度推理,推理速度更快，但精度会下降。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--dnn&#x27;</span>, action=<span class="string">&#x27;store_true&#x27;</span>, <span class="built_in">help</span>=<span class="string">&#x27;如果设置，使用OpenCV DNN模块进行ONNX推理。&#x27;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&#x27;--vid-stride&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>, default=<span class="number">1</span>, <span class="built_in">help</span>=<span class="string">&#x27;设置视频帧率步长。默认为1。&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><em>有关对于yolo的detect文件的使用方法</em></p>
+
       </section>
 
       
       
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="https://s2.loli.net/2024/03/12/jR5dLqKE4t3n1MC.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2024/03/13/%E5%9C%A8SD%E4%BD%BF%E7%94%A8%E4%BA%BA%E8%84%B8%E4%BC%98%E5%8C%96/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">使用StableDIffusion的GFPGAN/COdeFormer进行人脸修复</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
 
-      
-      
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
     </div>
     <div class="widget-info">
       <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -168,6 +222,8 @@
     </div>
   </div>
 </section>
+
+      
 
       
 <section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -231,7 +287,6 @@
     </div>
   </article>
 </div>
-
 
     <!-- footer container -->
 <footer id="footer" class="footer">
